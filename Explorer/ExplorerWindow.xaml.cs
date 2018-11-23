@@ -1,4 +1,5 @@
-﻿using DataHandlerManager;
+﻿
+using ExplorerManager;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,20 +17,19 @@ using System.Windows.Shapes;
 
 namespace Explorer
 {
-    /// <summary>
-    /// Interaction logic for MainWindow.xaml
-    /// </summary>
     public partial class MainWindow : Window
     {
-
         public int a = 0;
 
         public MainWindow()
         {
+            explorerManager ExplorerManager = new explorerManager();
             InitializeComponent();
+        }
 
-            ViewData d = new ViewData();
-            d.retrieveFiles();
+        private void onSearchButtonClicked(object sender, RoutedEventArgs e)
+        {
+            Console.WriteLine("ciao");
         }
     }
 }

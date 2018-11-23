@@ -1,0 +1,1 @@
+storescp -b USER:11115 --directory C:/Users/daniele/Desktop/outDicom

@@ -14,23 +14,29 @@ using System.Windows.Threading;
 namespace DataHandlerTools
 {
 
-    public class GetCreatedFiles
+    public class IncomingFileHandler
     {
+        public static string databaseLocation = @"C:/Users/daniele/Desktop/DATABASE";
+
         public FileSystemWatcher watcher = new FileSystemWatcher();
 
-        public GetCreatedFiles ()
+        public string dati = "";
+
+        public WaitForChangedResult result;
+
+
+        public IncomingFileHandler ()
         {
             initWatcher();
-            WaitForChangedResult result = watcher.WaitForChanged(WatcherChangeTypes.Created, 20000);
+            result = watcher.WaitForChanged(WatcherChangeTypes.Created, 20000);
             // wait...
             Console.WriteLine(result.TimedOut);
         }
 
         public void initWatcher()
         {
-
             // create a listener for incoming results
-            watcher.Path = @"C:/Users/daniele/Desktop/DATABASE";
+            watcher.Path = databaseLocation;
             watcher.Created += new FileSystemEventHandler(onCreated);
             watcher.EnableRaisingEvents = true;
         }
@@ -40,6 +46,11 @@ namespace DataHandlerTools
             Console.WriteLine("ciao");
         }
 
+        public void returnResults()
+        {
+            // leggi dati!!!
+        }
+
     }
-    
+
 }

@@ -101,9 +101,9 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\DataHandlerManager\DataHandlerManager.csproj">
-      <Project>{cd1d41ea-3acc-4a67-8045-b2b8a874829f}</Project>
-      <Name>DataHandlerManager</Name>
+    <ProjectReference Include="..\ExplorerManager\ExplorerManager.csproj">
+      <Project>{d472e881-dcfd-4e79-9b41-cd7fee73ee27}</Project>
+      <Name>ExplorerManager</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

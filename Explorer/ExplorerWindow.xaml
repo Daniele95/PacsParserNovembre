@@ -7,7 +7,8 @@
         mc:Ignorable="d"
         Title="MainWindow" Height="450" Width="800">
     <Grid>
-        <TextBox x:Name="myTextBox" HorizontalAlignment="Left" Height="23" Margin="345,223,0,0" TextWrapping="Wrap" Text="TextBox" VerticalAlignment="Top" Width="120"/>
+        <TextBox x:Name="searchBox" HorizontalAlignment="Left" Height="23" Margin="132,53,0,0" TextWrapping="Wrap" Text="Type your search" VerticalAlignment="Top" Width="120"/>
+        <Button x:Name="searchButton" Content="Search" HorizontalAlignment="Left" Margin="293,53,0,0" VerticalAlignment="Top" Width="75" RenderTransformOrigin="0.086,-0.662" Click="onSearchButtonClicked"/>
 
     </Grid>
 </Window>
