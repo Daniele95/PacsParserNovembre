@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace QueryTools
+namespace DataHandlerTools
 {
-    public class Class1
+    class ReadFile
     {
     }
 }

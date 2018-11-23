@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DataHandlerManager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -12,7 +13,6 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Library;
 
 namespace Explorer
 {
@@ -21,11 +21,15 @@ namespace Explorer
     /// </summary>
     public partial class MainWindow : Window
     {
+
+        public int a = 0;
+
         public MainWindow()
         {
             InitializeComponent();
-            Query a = new Query();
-            Console.WriteLine(a.print());
+
+            ViewData d = new ViewData();
+            d.retrieveFiles();
         }
     }
 }
