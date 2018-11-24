@@ -14,27 +14,14 @@ namespace QueryManager
             acceptor.Event += onCreated;
         }
 
-        public void onButtonPressed()
+        public void onButtonPressed(studyLevelQuery queryInputs)
         {
-            studyLevelQuery queryData = new studyLevelQuery();
-
-            queryData.insert("QueryRetrieveLevel", "STUDY");
-            queryData.insert("PatientName", "Doe*");
-            queryData.insert("PatientBirthDate", "");
-            queryData.insert("PatientID", "");
-            queryData.insert("Modality", "");
-            queryData.insert("StudyInstanceUID", "");
-            queryData.insert("StudyDate", "");
-            queryData.insert("AccessionNumber", "");
-            queryData.insert("StudyDescription", "");
-
-
-            queryTools.doStudyLevelQuery(queryData);
+            queryTools.doStudyLevelQuery(queryInputs);
         }
 
-        public void onCreated(string a)
+        public void onCreated(studyLevelQuery queryResults)
         {
-            RaiseEvent(a);
+            RaiseEvent(queryResults);
         }
 
     }

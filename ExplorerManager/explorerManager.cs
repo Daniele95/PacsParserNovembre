@@ -18,19 +18,18 @@ namespace ExplorerManager
             q.Event += onCreated;
         }
 
-        public void onButtonPressed()
+        public void onButtonPressed(string patientName)
         {
-            q.onButtonPressed();
+            studyLevelQuery queryInputs = new studyLevelQuery();
+            queryInputs.PatientName = patientName;
+            queryInputs.fill();
+            q.onButtonPressed(queryInputs);
 
-           // new System.Threading.Thread(() =>  {
-
-          //  }).Start();
         }
 
-        public void onCreated( string a)
+        public void onCreated(studyLevelQuery queryResults)
         {
-            Console.WriteLine("CCCCCCCCCCCCCCCCCCCCCCCCCCCCC");
-            RaiseEvent(a);
+            RaiseEvent(queryResults);
         }
 
     }

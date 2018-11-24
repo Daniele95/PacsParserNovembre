@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -10,30 +11,65 @@ namespace Utilities
     {
         
         Dictionary<string, string> queryData = new Dictionary<string, string>();
-        public void insert(string a, string b)
+
+        public string QueryRetrieveLevel { get; set; } = "STUDY";
+        public string PatientName { get; set; } = "";
+        public string PatientBirthDate { get; set; } = "";
+        public string PatientID { get; set; } = "";
+        public string Modality { get; set; } = "";
+        public string StudyInstanceUID { get; set; } = "";
+        public string StudyDate { get; set; } = "";
+        public string AccessionNumber { get; set; } = "";
+        public string StudyDescription { get; set; } = "";
+
+        public studyLevelQuery ()
         {
-            queryData.Add(a, b);
+            init();
         }
-        public Dictionary<string, string>.KeyCollection getKeys()
+        void init()
         {
-            return queryData.Keys;
+            PropertyInfo[] properties = typeof(studyLevelQuery).GetProperties();
+            foreach (PropertyInfo property in properties)
+            {
+                queryData.Add(property.Name, property.GetValue(this).ToString());
+            }
         }
-        public string getElementByTag(string tag)
+
+        public void fill()
+        {
+            PropertyInfo[] properties =  typeof(studyLevelQuery).GetProperties();
+            foreach (PropertyInfo property in properties)
+            {
+                queryData[property.Name] = property.GetValue(this).ToString();
+            }
+        }
+
+        public List<string> getKeys()
+        {
+            return new List<string>( queryData.Keys);
+        }
+
+        public string getValueByTag(string tag)
         {
             return queryData[tag];
+        }
+
+        public void setValueOfTag(string tag, string value)
+        {
+            queryData[tag] = value;
         }
 
     }
 
     public abstract class Publisher
     {
-        public delegate void EventHandler(string s);
+        public delegate void EventHandler(studyLevelQuery s);
         public event EventHandler Event;
 
-        public void RaiseEvent(string s)
+        public void RaiseEvent(studyLevelQuery s)
         {
             Event(s);
         }
-
     }
+
 }

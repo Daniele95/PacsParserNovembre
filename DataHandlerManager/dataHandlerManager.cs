@@ -11,9 +11,7 @@ namespace DataHandlerManager
 {
     public class dataHandlerManager : Publisher
     {
-
-        int retrieveData = 0;
-
+        
         incomingFileHandler incomingFileHandler;
 
         public dataHandlerManager()
@@ -22,11 +20,10 @@ namespace DataHandlerManager
             incomingFileHandler.Event += onCreated;
         }
 
-        public void onCreated(string a)
+        public void onCreated(studyLevelQuery queryResults)
         {
-            RaiseEvent(a);
+            RaiseEvent(queryResults);
         }
-
 
     }
 }

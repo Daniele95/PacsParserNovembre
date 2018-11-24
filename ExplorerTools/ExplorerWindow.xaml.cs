@@ -14,6 +14,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Utilities;
 
 namespace ExplorerTools
 {
@@ -31,15 +32,18 @@ namespace ExplorerTools
 
         private void onSearchButtonClicked(object sender, RoutedEventArgs e)
         {
-            ExplorerManager.onButtonPressed();
+            ExplorerManager.onButtonPressed(inputBox.Text);
         }
 
-        private void onQueryArrived(string a)
+        private void onQueryArrived(studyLevelQuery queryResults)
         {
-            this.Dispatcher.Invoke(() =>
-            {
-                resultsTextBox.Text = "risultati arrivati!!";
-            });
+                string resultText = "";
+                foreach (string tag in queryResults.getKeys())
+                     resultText = resultText+ "---------------------------> " + tag + " " + queryResults.getValueByTag(tag)+"\n";
+
+            this.Dispatcher.Invoke(() =>   {
+            resultsTextBlock.Text = resultText;
+           });
 
         }
         

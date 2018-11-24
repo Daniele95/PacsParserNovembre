@@ -25,6 +25,7 @@ namespace DataHandlerTools
         public WaitForChangedResult result;
 
 
+
         public incomingFileHandler()
         {
             // create a listener for incoming results
@@ -35,13 +36,12 @@ namespace DataHandlerTools
 
         void onCreated(object a, FileSystemEventArgs s)
         {
-            RaiseEvent("ciao");
+            XmlDocument doc = new XmlDocument();
+            doc.Load(s.FullPath);
+            studyLevelQuery queryResults = ReadFile.getXml(doc);
+            RaiseEvent(queryResults); // empty message
         }
 
-        public void returnResults()
-        {
-            // leggi dati!!!
-        }
 
     }
 

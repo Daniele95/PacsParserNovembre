@@ -16,13 +16,12 @@ namespace QueryTools
         public static string databaseLocation = @"C:/Users/daniele/Desktop/DATABASE";
 
 
-
         public static void doStudyLevelQuery(studyLevelQuery queryData)
         {
 
             string query = "";
             foreach (string dicomTag in queryData.getKeys())
-                query = " -k " + dicomTag + "=\"" + queryData.getElementByTag(dicomTag) + "\" " + query;
+                query = " -k " + dicomTag + "=\"" + queryData.getValueByTag(dicomTag) + "\" " + query;
 
 
             string fullQuery =
