@@ -4,10 +4,10 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C5FA6934-C775-44F0-889B-1D315CD374CE}</ProjectGuid>
+    <ProjectGuid>{EFC72487-A137-45CA-9D18-EF7193D0E590}</ProjectGuid>
     <OutputType>WinExe</OutputType>
-    <RootNamespace>Explorer</RootNamespace>
-    <AssemblyName>Explorer</AssemblyName>
+    <RootNamespace>ExplorerTools</RootNamespace>
+    <AssemblyName>ExplorerTools</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -36,7 +36,6 @@
   <ItemGroup>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Windows" />
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -55,10 +54,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="QueryWindow.xaml.cs">
-      <DependentUpon>QueryWindow.xaml</DependentUpon>
-    </Compile>
-    <Page Include="ExplorerWindow.xaml">
+    <Page Include="MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -66,14 +62,10 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="ExplorerWindow.xaml.cs">
-      <DependentUpon>ExplorerWindow.xaml</DependentUpon>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="QueryWindow.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -105,10 +97,6 @@
     <ProjectReference Include="..\ExplorerManager\ExplorerManager.csproj">
       <Project>{d472e881-dcfd-4e79-9b41-cd7fee73ee27}</Project>
       <Name>ExplorerManager</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Utilities\Utilities.csproj">
-      <Project>{a5207704-c77d-4f5e-b314-878c0a897d6f}</Project>
-      <Name>Utilities</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -8,21 +8,33 @@ using System.Windows.Threading;
 
 namespace DataHandlerManager
 {
-    public class dataHandlerManager
+    public abstract class Publisher
+    {
+        public delegate void EventHandler(string s);
+        public event EventHandler Event;
+
+        public void RaiseEvent(string s)
+        {
+            Event(s);
+        }
+
+    }
+    public class dataHandlerManager : Publisher
     {
 
         int retrieveData = 0;
 
-        IncomingFileHandler incomingFileHandler;
+        incomingFileHandler incomingFileHandler;
 
         public dataHandlerManager()
-        {   // create + init:
-            incomingFileHandler = new IncomingFileHandler();
+        {   
+            incomingFileHandler = new incomingFileHandler(); // init watcher
+            incomingFileHandler.Event += onCreated;
         }
 
-        public void returnResults()
+        public void onCreated(string a)
         {
-            incomingFileHandler.returnResults();
+            RaiseEvent(a);
         }
 
 

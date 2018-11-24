@@ -11,8 +11,9 @@ namespace QueryTools
     {
         public static string servicesLocation = @"C:/Users/daniele/Documents/Visual Studio 2017/Projects/PacsParserNovembre/Services/";
 
+        public static string databaseLocation = @"C:/Users/daniele/Desktop/DATABASE";
 
-        
+
         public static void launchQuery()
         {
             // query optionts
@@ -21,7 +22,7 @@ namespace QueryTools
             query = " -k PatientID " + query;
             query = " -k QueryRetrieveLevel=\"PATIENT\" " + query;
             string fullQuery =
-                 " -P  -aec MIOSERVER " + query + " localhost 11112  -od ./Results -v --extract-xml ";
+                 " -P  -aec MIOSERVER " + query + " localhost 11112  -od "+ databaseLocation+" -v --extract-xml ";
 
             // launch query
             initProcess("findscu", fullQuery);

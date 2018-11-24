@@ -40,17 +40,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Query.cs" />
+    <Compile Include="queryManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataHandlerManager\DataHandlerManager.csproj">
       <Project>{cd1d41ea-3acc-4a67-8045-b2b8a874829f}</Project>
       <Name>DataHandlerManager</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\DataHandlerTools\DataHandlerTools.csproj">
-      <Project>{D5909CD3-C698-459B-971C-5767707ADD96}</Project>
-      <Name>DataHandlerTools</Name>
     </ProjectReference>
     <ProjectReference Include="..\QueryTools\QueryTools.csproj">
       <Project>{1b8e122e-7659-4765-ac95-c1a86e759b60}</Project>

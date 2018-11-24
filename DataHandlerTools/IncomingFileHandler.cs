@@ -10,11 +10,21 @@ using System.Xml.Linq;
 using System.Threading;
 using System.Windows.Threading;
 
-
 namespace DataHandlerTools
 {
+    public abstract class Publisher
+    {
+        public delegate void EventHandler(string s);
+        public event EventHandler Event;
 
-    public class IncomingFileHandler
+        public void RaiseEvent(string s)
+        {
+            Event(s);
+        }
+
+    }
+
+    public class incomingFileHandler : Publisher
     {
         public static string databaseLocation = @"C:/Users/daniele/Desktop/DATABASE";
 
@@ -25,25 +35,17 @@ namespace DataHandlerTools
         public WaitForChangedResult result;
 
 
-        public IncomingFileHandler ()
-        {
-            initWatcher();
-            result = watcher.WaitForChanged(WatcherChangeTypes.Created, 20000);
-            // wait...
-            Console.WriteLine(result.TimedOut);
-        }
-
-        public void initWatcher()
+        public incomingFileHandler()
         {
             // create a listener for incoming results
             watcher.Path = databaseLocation;
             watcher.Created += new FileSystemEventHandler(onCreated);
             watcher.EnableRaisingEvents = true;
         }
-        
+
         void onCreated(object a, FileSystemEventArgs s)
         {
-            Console.WriteLine("ciao");
+            RaiseEvent(s.ToString());
         }
 
         public void returnResults()

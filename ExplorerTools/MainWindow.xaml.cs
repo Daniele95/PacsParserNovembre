@@ -14,7 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Explorer
+namespace ExplorerTools
 {
     public partial class MainWindow : Window
     {
@@ -35,7 +35,7 @@ namespace Explorer
 
         private void onQueryArrived(string a)
         {
-            resultsTextBox.Text = "risultati arrivati!!";
+            // resultsTextBox.Text = "risultati arrivati!!";
         }
     }
 }
