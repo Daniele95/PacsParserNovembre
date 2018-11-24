@@ -9,20 +9,10 @@ using System.Xml;
 using System.Xml.Linq;
 using System.Threading;
 using System.Windows.Threading;
+using Utilities;
 
 namespace DataHandlerTools
 {
-    public abstract class Publisher
-    {
-        public delegate void EventHandler(string s);
-        public event EventHandler Event;
-
-        public void RaiseEvent(string s)
-        {
-            Event(s);
-        }
-
-    }
 
     public class incomingFileHandler : Publisher
     {

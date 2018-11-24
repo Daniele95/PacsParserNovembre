@@ -5,20 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
+using Utilities;
 
 namespace ExplorerManager
 {
-    public abstract class Publisher
-    {
-        public delegate void EventHandler(string s);
-        public event EventHandler Event;
-
-        public void RaiseEvent(string s)
-        {
-            Event(s);
-        }
-
-    }
     public class explorerManager : Publisher
     {
         public void onButtonPressed()
@@ -34,7 +24,7 @@ namespace ExplorerManager
         public void onCreated( string a)
         {
             Console.WriteLine("RISULTATI ARRIVATI arrivati!!");
-           // RaiseEvent(a);
+            RaiseEvent(a);
         }
 
     }

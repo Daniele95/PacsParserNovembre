@@ -14,14 +14,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Explorer
+namespace ExplorerTools
 {
-    public partial class MainWindow : Window
+    public partial class ExplorerWindow : Window
     {
         public int a = 0;
         explorerManager ExplorerManager;
 
-        public MainWindow()
+        public ExplorerWindow()
         {
             ExplorerManager = new explorerManager();
             ExplorerManager.Event += onQueryArrived;
@@ -35,7 +35,8 @@ namespace Explorer
 
         private void onQueryArrived(string a)
         {
-            resultsTextBox.Text = "risultati arrivati!!";
+             resultsTextBox.Text = "risultati arrivati!!";
         }
+        
     }
 }

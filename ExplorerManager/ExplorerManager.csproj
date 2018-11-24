@@ -49,6 +49,10 @@
       <Project>{dbb57831-96cc-4a26-92c9-7fd11f7d0461}</Project>
       <Name>QueryManager</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{a5207704-c77d-4f5e-b314-878c0a897d6f}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -5,20 +5,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Threading;
+using Utilities;
 
 namespace DataHandlerManager
 {
-    public abstract class Publisher
-    {
-        public delegate void EventHandler(string s);
-        public event EventHandler Event;
-
-        public void RaiseEvent(string s)
-        {
-            Event(s);
-        }
-
-    }
     public class dataHandlerManager : Publisher
     {
 

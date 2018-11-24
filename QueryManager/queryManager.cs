@@ -2,20 +2,10 @@
 using System.Threading;
 using DataHandlerManager;
 using QueryTools;
+using Utilities;
 
 namespace QueryManager
 {
-    public abstract class Publisher
-    {
-        public delegate void EventHandler(string s);
-        public event EventHandler Event;
-
-        public void RaiseEvent(string s)
-        {
-            Event(s);
-        }
-
-    }
     public class queryManager : Publisher
     {
         public queryManager()
@@ -25,13 +15,11 @@ namespace QueryManager
             queryTools.launchQuery();
         }
 
-
         public void onCreated(string a)
         {
             Console.WriteLine("risultati arrivati!!");
             RaiseEvent(a);
         }
-
 
     }
 }

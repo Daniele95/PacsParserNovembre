@@ -52,6 +52,10 @@
       <Project>{1b8e122e-7659-4765-ac95-c1a86e759b60}</Project>
       <Name>QueryTools</Name>
     </ProjectReference>
+    <ProjectReference Include="..\Utilities\Utilities.csproj">
+      <Project>{a5207704-c77d-4f5e-b314-878c0a897d6f}</Project>
+      <Name>Utilities</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
