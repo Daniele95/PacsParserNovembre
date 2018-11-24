@@ -35,7 +35,7 @@ namespace DataHandlerTools
 
         void onCreated(object a, FileSystemEventArgs s)
         {
-            RaiseEvent(s.ToString());
+            RaiseEvent("ciao");
         }
 
         public void returnResults()

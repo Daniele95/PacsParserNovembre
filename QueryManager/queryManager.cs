@@ -12,12 +12,15 @@ namespace QueryManager
         {
             dataHandlerManager acceptor = new dataHandlerManager();
             acceptor.Event += onCreated;
+        }
+
+        public void onButtonPressed()
+        {
             queryTools.launchQuery();
         }
 
         public void onCreated(string a)
         {
-            Console.WriteLine("risultati arrivati!!");
             RaiseEvent(a);
         }
 

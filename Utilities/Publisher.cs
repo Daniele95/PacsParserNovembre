@@ -13,7 +13,7 @@ namespace Utilities
 
         public void RaiseEvent(string s)
         {
-            Event( s);
+            Event(s);
         }
 
     }
