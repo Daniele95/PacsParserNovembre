@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Utilities;
 
 namespace QueryTools
 {
@@ -14,52 +16,26 @@ namespace QueryTools
         public static string databaseLocation = @"C:/Users/daniele/Desktop/DATABASE";
 
 
-        public static void launchQuery()
-        {
-            // query optionts
-            string query = "";
-            query = " -k PatientName=\"\" " + query;
-            query = " -k PatientID " + query;
-            query = " -k QueryRetrieveLevel=\"PATIENT\" " + query;
-            string fullQuery =
-                 " -P  -aec MIOSERVER " + query + " localhost 11112  -od "+ databaseLocation+" -v --extract-xml ";
 
-            // launch query
-            initProcess("findscu", fullQuery);
-        }
-
-        public static void findStudiesByPatientID(string patientID)
+        public static void doStudyLevelQuery(studyLevelQuery queryData)
         {
-            // query optionts
+
             string query = "";
-            query = " -k PatientID=\"" + patientID + "\"" + query;
-            query = " -k QueryRetrieveLevel=\"STUDY\" " + query;
-            query = " -k StudyInstanceUID" + query;
-            query = " -k StudyDate" + query;
+            foreach (string dicomTag in queryData.getKeys())
+                query = " -k " + dicomTag + "=\"" + queryData.getElementByTag(dicomTag) + "\" " + query;
+
 
             string fullQuery =
-                 " -P  -aec MIOSERVER " + query + " localhost 11112  -od ./Results -v --extract-xml";
+                 " -S  -aec MIOSERVER " + query + " localhost 11112  -od " + databaseLocation + " -v --extract-xml ";
 
-            // launch query
+
+            DirectoryInfo di = Directory.CreateDirectory(databaseLocation);
+            foreach (FileInfo file in di.GetFiles())
+                file.Delete();
+
             initProcess("findscu", fullQuery);
 
         }
-
-        public static void downloadStudy(string studyInstanceUID, string patientID)
-        {
-            string query = "";
-            query = " -k QueryRetrieveLevel=\"STUDY\" " + query;
-            query = " -k StudyInstanceUID=\"" + studyInstanceUID + "\"" + query;
-            query = " -k PatientID=\"" + patientID + "\"" + query;
-
-            string fullQuery =
-                 " -aem USER  -aec MIOSERVER " + query + " localhost 11112 -v";
-
-            // launch query
-            initProcess("movescu-dcmtk", fullQuery);
-        }
-
-
         public static void initProcess(string queryType, string arguments)
         {
             var proc = new Process

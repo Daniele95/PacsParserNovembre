@@ -16,7 +16,20 @@ namespace QueryManager
 
         public void onButtonPressed()
         {
-            queryTools.launchQuery();
+            studyLevelQuery queryData = new studyLevelQuery();
+
+            queryData.insert("QueryRetrieveLevel", "STUDY");
+            queryData.insert("PatientName", "Doe*");
+            queryData.insert("PatientBirthDate", "");
+            queryData.insert("PatientID", "");
+            queryData.insert("Modality", "");
+            queryData.insert("StudyInstanceUID", "");
+            queryData.insert("StudyDate", "");
+            queryData.insert("AccessionNumber", "");
+            queryData.insert("StudyDescription", "");
+
+
+            queryTools.doStudyLevelQuery(queryData);
         }
 
         public void onCreated(string a)
