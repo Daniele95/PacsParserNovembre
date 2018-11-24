@@ -26,6 +26,7 @@ namespace Utilities
         {
             init();
         }
+
         void init()
         {
             PropertyInfo[] properties = typeof(studyLevelQuery).GetProperties();
@@ -56,6 +57,11 @@ namespace Utilities
 
         public void setValueOfTag(string tag, string value)
         {
+            PropertyInfo prop = this.GetType().GetProperty(tag, BindingFlags.Public |  BindingFlags.Instance);
+
+            if (null != prop && prop.CanWrite) 
+                prop.SetValue(this, value, null); 
+
             queryData[tag] = value;
         }
 

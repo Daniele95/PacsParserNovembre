@@ -13,7 +13,7 @@
         </Grid.ColumnDefinitions>
         <Button x:Name="button" Content="Button" HorizontalAlignment="Left" Margin="178.667,35,0,0" VerticalAlignment="Top" Width="75" Grid.Column="1" Click="onSearchButtonClicked"/>
         <TextBox x:Name="inputBox" HorizontalAlignment="Left" Height="23" Margin="74,35,0,0" TextWrapping="Wrap" Text="Doe*" VerticalAlignment="Top" Width="120" Grid.ColumnSpan="2"/>
-        <TextBlock x:Name="resultsTextBlock" HorizontalAlignment="Left" Margin="74,73,0,0" TextWrapping="Wrap" Text="risultati" VerticalAlignment="Top" Height="163" Width="254" Grid.ColumnSpan="2"/>
+        <StackPanel x:Name="stackPanel" HorizontalAlignment="Left" Height="298" Margin="74,83,0,0" VerticalAlignment="Top" Width="643" Grid.ColumnSpan="2"/>
 
     </Grid>
 </Window>

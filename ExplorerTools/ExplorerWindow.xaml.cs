@@ -32,19 +32,21 @@ namespace ExplorerTools
 
         private void onSearchButtonClicked(object sender, RoutedEventArgs e)
         {
+            stackPanel.Children.Clear();
             ExplorerManager.onButtonPressed(inputBox.Text);
         }
 
         private void onQueryArrived(studyLevelQuery queryResults)
         {
-                string resultText = "";
-                foreach (string tag in queryResults.getKeys())
-                     resultText = resultText+ "---------------------------> " + tag + " " + queryResults.getValueByTag(tag)+"\n";
+            string resultText = "";
+            resultText = queryResults.PatientName+" "+ queryResults.StudyDate+"\n";
 
             this.Dispatcher.Invoke(() =>   {
-            resultsTextBlock.Text = resultText;
-           });
-
+                TextBlock resultsTextBlock = new TextBlock();
+                resultsTextBlock.Text = resultText;
+                stackPanel.Children.Add(resultsTextBlock);
+            });
+            
         }
         
     }

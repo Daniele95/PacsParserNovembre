@@ -11,9 +11,9 @@ namespace QueryTools
 {
     public static class queryTools
     {
-        public static string servicesLocation = @"C:/Users/daniele/Documents/Visual Studio 2017/Projects/PacsParserNovembre/Services/";
+        public static string databaseLocation = @"C:/Users/daniele/Desktop/QUERYRESULTS";
 
-        public static string databaseLocation = @"C:/Users/daniele/Desktop/DATABASE";
+        public static string servicesLocation = @"C:/Users/daniele/Documents/Visual Studio 2017/Projects/PacsParserNovembre/Services/";
 
 
         public static void doStudyLevelQuery(studyLevelQuery queryData)
@@ -31,6 +31,7 @@ namespace QueryTools
             DirectoryInfo di = Directory.CreateDirectory(databaseLocation);
             foreach (FileInfo file in di.GetFiles())
                 file.Delete();
+            Console.WriteLine("file cancelati!!>---------------------------------------------------");
 
             initProcess("findscu", fullQuery);
 
