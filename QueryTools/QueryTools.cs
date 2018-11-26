@@ -5,6 +5,7 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 using Utilities;
 
 namespace QueryTools
@@ -13,6 +14,7 @@ namespace QueryTools
     {
         public static string servicesLocation = @"C:/Users/daniele/Documents/Visual Studio 2017/Projects/PacsParserNovembre/Services/";
 
+        public static bool verbose = true;
 
         public static void doQuery(query queryData,string dir)
         {
@@ -23,12 +25,14 @@ namespace QueryTools
 
 
             string fullQuery =
-                 " -S  -aec MIOSERVER " + query + " localhost 11112  -od " + dir + " -v --extract-xml ";
+                 " -S  -aec MIOSERVER " + query + " localhost 11112  -od " + dir + " --extract-xml ";
 
 
             DirectoryInfo di = Directory.CreateDirectory(dir);
             foreach (FileInfo file in di.GetFiles())
                 file.Delete();
+
+            Console.WriteLine(fullQuery);
 
             initProcess("findscu", fullQuery);
 
@@ -43,7 +47,7 @@ namespace QueryTools
             query = " -k PatientID=\"" + studyInputs.PatientID + "\"" + query;
 
             string fullQuery =
-                 " -aem USER  -aec MIOSERVER " + query + " localhost 11112 -v";
+                 " -aem USER  -aec MIOSERVER " + query + " localhost 11112";
 
             // launch query
             initProcess("movescu-dcmtk", fullQuery);
@@ -52,6 +56,8 @@ namespace QueryTools
 
         public static void initProcess(string queryType, string arguments)
         {
+            arguments = arguments + " -v";
+
             var proc = new Process
             {
                 StartInfo = new ProcessStartInfo
@@ -69,7 +75,7 @@ namespace QueryTools
             while (!proc.StandardOutput.EndOfStream)
             {
                 string line = proc.StandardOutput.ReadLine();
-                Console.WriteLine(line);
+                if (verbose) Console.WriteLine(line);
             }
         }
     }

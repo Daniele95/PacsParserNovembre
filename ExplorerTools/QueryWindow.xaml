@@ -9,7 +9,7 @@
       Title="Query">
 
     <Grid>
-        <StackPanel Name="stackPanel" HorizontalAlignment="Left" Height="152" Margin="152,173,0,0" VerticalAlignment="Top" Width="471"/>
+        <StackPanel Name="stackPanel" HorizontalAlignment="Left" Height="152" Margin="152,173,0,0" VerticalAlignment="Top" Width="283"/>
         <TextBox x:Name="inputBox" HorizontalAlignment="Left" Height="23" Margin="113,85,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
         <Button x:Name="searchButton" Content="search" HorizontalAlignment="Left" Margin="306,85,0,0" VerticalAlignment="Top" Width="75" Click="onSearchButtonClicked"/>
 

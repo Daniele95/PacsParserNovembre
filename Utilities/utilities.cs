@@ -4,6 +4,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Utilities
 {
@@ -26,6 +27,7 @@ namespace Utilities
         public string StudyInstanceUID { get; set; } = "";
         public string SeriesInstanceUID { get; set; } = "";
         public string SeriesDescription { get; set; } = "";
+        public string PatientID { get; set; } = "";
 
 
         public seriesLevelQuery() : base()
@@ -34,6 +36,8 @@ namespace Utilities
         public seriesLevelQuery(studyLevelQuery studyQuery) : base()
         {
             setValueOfTag("StudyInstanceUID",studyQuery.getValueByTag("StudyInstanceUID"));
+            setValueOfTag("PatientID", studyQuery.getValueByTag("PatientID"));
+
         }
 
     }

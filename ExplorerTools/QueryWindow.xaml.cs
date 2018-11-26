@@ -23,49 +23,19 @@ namespace ExplorerTools
     /// </summary>
     public partial class QueryWindow : Page
     {
-        explorerManager ExplorerManager;
+        public Main mainWindow;
 
-        public QueryWindow(explorerManager e)
+        public QueryWindow(Main mainWindow)
         {
-            ExplorerManager = e;
-            ExplorerManager.studyArrived += onQueryArrived;
-            ExplorerManager.seriesArrived += onSeriesArrived;
+            this.mainWindow = mainWindow;
             InitializeComponent();
         }
-
         private void onSearchButtonClicked(object sender, RoutedEventArgs e)
         {
-            stackPanel.Children.Clear();
-            ExplorerManager.onButtonPressed(inputBox.Text);
+            mainWindow.onSearchButtonClicked();
         }
 
-        private void onQueryArrived(studyLevelQuery queryResults)
-        {
-            string resultText = "";
-            resultText = queryResults.PatientName + " " + queryResults.StudyDate + "\n";
 
-            this.Dispatcher.Invoke(() => {
-                Button result = new Button();
-                result.Content = resultText;
-                result.Click += ((o, e) => {
-                    // if button pressed, do a retrieval of the series in that study
-                    ExplorerManager.onStudyButtonPressed();
-                });
-                stackPanel.Children.Add(result);
-                
-            });
 
         }
-
-        private void onSeriesArrived(seriesLevelQuery queryResults)
-        {
-              Dispatcher.Invoke(() =>
-              {
-                  SeriesFound seriesFoundPage = new SeriesFound();
-                  seriesFoundPage.queryResults = queryResults;
-                  this.NavigationService.Navigate(seriesFoundPage);
-              });
-        }
-
-    }
 }

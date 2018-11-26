@@ -1,4 +1,5 @@
-﻿using System;
+﻿using ExplorerManager;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -16,27 +17,17 @@ using Utilities;
 
 namespace ExplorerTools
 {
-    /// <summary>
-    /// Interaction logic for SeriesFound.xaml
-    /// </summary>
     public partial class SeriesFound : Page
     {
-        public seriesLevelQuery queryResults;
+
 
         public SeriesFound()
         {
             InitializeComponent();
-        }
-        void Window_Load(object o, RoutedEventArgs e)
-        {
+            stackPanel.Children.Clear();
 
-            Button result = new Button();
-            result.Content = queryResults.SeriesInstanceUID;
-            result.Click += ((obj, evento) => {
-                // if button pressed, do a retrieval of the series in that study
-                Console.WriteLine("ciao");
-            });
-            stackPanel.Children.Add(result);
         }
+
+    
     }
 }
