@@ -13,7 +13,6 @@ namespace ExplorerTools
 
         FileBrowser f;
         QueryWindow q;
-        SeriesFound s = new SeriesFound();
          
         public Main()
         {
@@ -32,7 +31,6 @@ namespace ExplorerTools
         }
         void downloadClick(object o, RoutedEventArgs e)
         {
-            frame.NavigationService.Navigate(s);
         }
 
     }

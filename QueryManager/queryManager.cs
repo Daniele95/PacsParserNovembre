@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Threading;
+using System.Windows;
 using DataHandlerManager;
 using QueryTools;
 using Utilities;
@@ -30,10 +31,11 @@ namespace QueryManager
 
         public void onCreated(query queryResults)
         {
-            if(queryResults.GetType().Equals("studyLevelQuery"))
+
+            if (queryResults.GetType().Name.Equals("studyLevelQuery"))
                 raiseStudyArrived((studyLevelQuery)queryResults);
 
-            if (queryResults.GetType().Equals("seriesLevelQuery"))
+            if (queryResults.GetType().Name.Equals("seriesLevelQuery"))
                 raiseSeriesArrived((seriesLevelQuery)queryResults);
         }
 

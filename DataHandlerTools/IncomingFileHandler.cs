@@ -45,7 +45,7 @@ namespace DataHandlerTools
             try
             {
                 doc.Load(s.FullPath);
-                studyLevelQuery queryResults = ReadFile.getXml(doc);
+                query queryResults = ReadFile.getXml(doc);
                 RaiseEvent(queryResults); // empty message
             }
             catch (FileNotFoundException) { MessageBox.Show(s.FullPath + " file not found"); }

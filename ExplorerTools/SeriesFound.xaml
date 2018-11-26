@@ -6,9 +6,12 @@
       xmlns:local="clr-namespace:ExplorerTools"
       mc:Ignorable="d" 
       d:DesignHeight="450" d:DesignWidth="800"
-      Title="SeriesFound">
+      Title="SeriesFound"
+      Loaded="Window_Load">
+
 
     <Grid>
-        
+        <StackPanel HorizontalAlignment="Left" Name="stackPanel" Height="264" Margin="88,94,0,0" VerticalAlignment="Top" Width="457"/>
+
     </Grid>
 </Page>

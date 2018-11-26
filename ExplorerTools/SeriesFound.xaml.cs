@@ -12,6 +12,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Utilities;
 
 namespace ExplorerTools
 {
@@ -20,9 +21,22 @@ namespace ExplorerTools
     /// </summary>
     public partial class SeriesFound : Page
     {
+        public seriesLevelQuery queryResults;
+
         public SeriesFound()
         {
             InitializeComponent();
+        }
+        void Window_Load(object o, RoutedEventArgs e)
+        {
+
+            Button result = new Button();
+            result.Content = queryResults.SeriesInstanceUID;
+            result.Click += ((obj, evento) => {
+                // if button pressed, do a retrieval of the series in that study
+                Console.WriteLine("ciao");
+            });
+            stackPanel.Children.Add(result);
         }
     }
 }

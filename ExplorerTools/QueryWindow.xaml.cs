@@ -23,7 +23,6 @@ namespace ExplorerTools
     /// </summary>
     public partial class QueryWindow : Page
     {
-        public int a = 0;
         explorerManager ExplorerManager;
 
         public QueryWindow(explorerManager e)
@@ -53,15 +52,19 @@ namespace ExplorerTools
                     ExplorerManager.onStudyButtonPressed();
                 });
                 stackPanel.Children.Add(result);
-
-                //Button studyDownload = 
+                
             });
 
         }
 
         private void onSeriesArrived(seriesLevelQuery queryResults)
         {
-            MessageBox.Show("Series arrive!");
+              Dispatcher.Invoke(() =>
+              {
+                  SeriesFound seriesFoundPage = new SeriesFound();
+                  seriesFoundPage.queryResults = queryResults;
+                  this.NavigationService.Navigate(seriesFoundPage);
+              });
         }
 
     }

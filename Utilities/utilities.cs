@@ -27,6 +27,10 @@ namespace Utilities
         public string SeriesInstanceUID { get; set; } = "";
         public string SeriesDescription { get; set; } = "";
 
+
+        public seriesLevelQuery() : base()
+        { }
+
         public seriesLevelQuery(studyLevelQuery studyQuery) : base()
         {
             setValueOfTag("StudyInstanceUID",studyQuery.getValueByTag("StudyInstanceUID"));
