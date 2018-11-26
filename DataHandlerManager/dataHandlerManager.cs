@@ -9,18 +9,18 @@ using Utilities;
 
 namespace DataHandlerManager
 {
-    public class dataHandlerManager : Publisher
+    public class dataHandlerManager : SinglePublisher
     {
         
         incomingFileHandler incomingFileHandler;
 
-        public dataHandlerManager()
+        public dataHandlerManager(string dir)
         {   
-            incomingFileHandler = new incomingFileHandler(); // init watcher
+            incomingFileHandler = new incomingFileHandler(dir); // init watcher
             incomingFileHandler.Event += onCreated;
         }
 
-        public void onCreated(studyLevelQuery queryResults)
+        public void onCreated(query queryResults)
         {
             RaiseEvent(queryResults);
         }

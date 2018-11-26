@@ -9,20 +9,32 @@ namespace QueryManager
     
     public class queryManager : Publisher
     {
-        public queryManager()
+        string dir;
+        public queryManager(string dir)
         {
-            dataHandlerManager acceptor = new dataHandlerManager();
+            this.dir = dir;
+            dataHandlerManager acceptor = new dataHandlerManager(dir);
             acceptor.Event += onCreated;
         }
 
         public void onButtonPressed(studyLevelQuery queryInputs)
         {
-            queryTools.doStudyLevelQuery(queryInputs);
+            queryTools.doQuery(queryInputs,dir);
         }
 
-        public void onCreated(studyLevelQuery queryResults)
+        public void onStudyButtonPressed(seriesLevelQuery queryInputs)
         {
-            RaiseEvent(queryResults);
+            queryTools.doQuery(queryInputs,dir);
+        }
+
+
+        public void onCreated(query queryResults)
+        {
+            if(queryResults.GetType().Equals("studyLevelQuery"))
+                raiseStudyArrived((studyLevelQuery)queryResults);
+
+            if (queryResults.GetType().Equals("seriesLevelQuery"))
+                raiseSeriesArrived((seriesLevelQuery)queryResults);
         }
 
     }

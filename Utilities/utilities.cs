@@ -7,11 +7,8 @@ using System.Threading.Tasks;
 
 namespace Utilities
 {
-    public class studyLevelQuery
+    public class studyLevelQuery: query
     {
-        
-        Dictionary<string, string> queryData = new Dictionary<string, string>();
-
         public string QueryRetrieveLevel { get; set; } = "STUDY";
         public string PatientName { get; set; } = "";
         public string PatientBirthDate { get; set; } = "";
@@ -21,15 +18,35 @@ namespace Utilities
         public string StudyDate { get; set; } = "";
         public string AccessionNumber { get; set; } = "";
         public string StudyDescription { get; set; } = "";
+    }
 
-        public studyLevelQuery ()
+    public class seriesLevelQuery : query
+    {
+        public string QueryRetrieveLevel { get; set; } = "SERIES";
+        public string StudyInstanceUID { get; set; } = "";
+        public string SeriesInstanceUID { get; set; } = "";
+        public string SeriesDescription { get; set; } = "";
+
+        public seriesLevelQuery(studyLevelQuery studyQuery) : base()
+        {
+            setValueOfTag("StudyInstanceUID",studyQuery.getValueByTag("StudyInstanceUID"));
+        }
+
+    }
+
+    public abstract class query
+    {
+        
+        Dictionary<string, string> queryData = new Dictionary<string, string>();
+
+        public query ()
         {
             init();
         }
 
         void init()
         {
-            PropertyInfo[] properties = typeof(studyLevelQuery).GetProperties();
+            PropertyInfo[] properties = this.GetType().GetProperties();
             foreach (PropertyInfo property in properties)
             {
                 queryData.Add(property.Name, property.GetValue(this).ToString());
@@ -38,7 +55,7 @@ namespace Utilities
 
         public void fill()
         {
-            PropertyInfo[] properties =  typeof(studyLevelQuery).GetProperties();
+            PropertyInfo[] properties = this.GetType().GetProperties();
             foreach (PropertyInfo property in properties)
             {
                 queryData[property.Name] = property.GetValue(this).ToString();
@@ -66,16 +83,35 @@ namespace Utilities
         }
 
     }
-
-    public abstract class Publisher
+   
+    public abstract class SinglePublisher
     {
-        public delegate void EventHandler(studyLevelQuery s);
+        public delegate void EventHandler(query s);
         public event EventHandler Event;
 
-        public void RaiseEvent(studyLevelQuery s)
+        public void RaiseEvent(query s)
         {
             Event(s);
         }
     }
+   
 
+    public abstract class Publisher
+    {
+        public delegate void studyArrivedHandler(studyLevelQuery s);
+        public event studyArrivedHandler studyArrived;
+
+        public void raiseStudyArrived(studyLevelQuery s)
+        {
+            studyArrived(s);
+        }
+
+        public delegate void seriesArrivedHandler(seriesLevelQuery s);
+        public event seriesArrivedHandler seriesArrived;
+
+        public void raiseSeriesArrived(seriesLevelQuery s)
+        {
+            seriesArrived(s);
+        }
+    }
 }

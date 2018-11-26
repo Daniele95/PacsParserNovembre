@@ -25,17 +25,14 @@ namespace ExplorerTools
         {
             f = new FileBrowser();
             frame.NavigationService.Navigate(f);
-
         }
         void queryClick(object o, RoutedEventArgs e)
         {
             frame.NavigationService.Navigate(q);
-
         }
         void downloadClick(object o, RoutedEventArgs e)
         {
             frame.NavigationService.Navigate(s);
-
         }
 
     }

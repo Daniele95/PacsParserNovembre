@@ -11,12 +11,10 @@ namespace QueryTools
 {
     public static class queryTools
     {
-        public static string databaseLocation = @"C:/Users/daniele/Desktop/QUERYRESULTS";
-
         public static string servicesLocation = @"C:/Users/daniele/Documents/Visual Studio 2017/Projects/PacsParserNovembre/Services/";
 
 
-        public static void doStudyLevelQuery(studyLevelQuery queryData)
+        public static void doQuery(query queryData,string dir)
         {
 
             string query = "";
@@ -25,17 +23,17 @@ namespace QueryTools
 
 
             string fullQuery =
-                 " -S  -aec MIOSERVER " + query + " localhost 11112  -od " + databaseLocation + " -v --extract-xml ";
+                 " -S  -aec MIOSERVER " + query + " localhost 11112  -od " + dir + " -v --extract-xml ";
 
 
-            DirectoryInfo di = Directory.CreateDirectory(databaseLocation);
+            DirectoryInfo di = Directory.CreateDirectory(dir);
             foreach (FileInfo file in di.GetFiles())
                 file.Delete();
-            Console.WriteLine("file cancelati!!>---------------------------------------------------");
 
             initProcess("findscu", fullQuery);
 
         }
+
 
         public static void downloadStudy(studyLevelQuery studyInputs)
         {

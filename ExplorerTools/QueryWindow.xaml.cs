@@ -29,7 +29,8 @@ namespace ExplorerTools
         public QueryWindow(explorerManager e)
         {
             ExplorerManager = e;
-            ExplorerManager.Event += onQueryArrived;
+            ExplorerManager.studyArrived += onQueryArrived;
+            ExplorerManager.seriesArrived += onSeriesArrived;
             InitializeComponent();
         }
 
@@ -48,13 +49,19 @@ namespace ExplorerTools
                 Button result = new Button();
                 result.Content = resultText;
                 result.Click += ((o, e) => {
-                    ExplorerManager.onStudyButtonPressed(queryResults);
+                    // if button pressed, do a retrieval of the series in that study
+                    ExplorerManager.onStudyButtonPressed();
                 });
                 stackPanel.Children.Add(result);
 
                 //Button studyDownload = 
             });
 
+        }
+
+        private void onSeriesArrived(seriesLevelQuery queryResults)
+        {
+            MessageBox.Show("Series arrive!");
         }
 
     }

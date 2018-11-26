@@ -17,7 +17,7 @@ namespace QueryManager
         }
         public void onCreated(studyLevelQuery queryResults)
         {
-            RaiseEvent(queryResults);
+         //   RaiseEvent(queryResults);
         }
     }
 }

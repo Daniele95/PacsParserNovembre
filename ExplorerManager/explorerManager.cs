@@ -11,39 +11,60 @@ namespace ExplorerManager
 {
     public class explorerManager : Publisher
     {
-        public queryManager query;
+        public queryManager studyQueryManager;
+        studyLevelQuery studyQuery;
+        public queryManager seriesQueryManager;
+        seriesLevelQuery seriesQuery;
         public downloadManager d;
 
         public explorerManager()
         {
-            query = new queryManager();
-            query.Event += onCreated;
-
-            d = new downloadManager();
-            d.Event += onDownloaded;
-
+           
         }
 
         public void onButtonPressed(string patientName)
         {
-            studyLevelQuery queryInputs = new studyLevelQuery();
-            queryInputs.PatientName = patientName;
-            queryInputs.fill();
-            query.onButtonPressed(queryInputs);
+            studyQuery = new studyLevelQuery();
+            studyQuery.PatientName = patientName;
+            studyQuery.fill();
+
+            studyQueryManager = new queryManager(@"C:/Users/daniele/Desktop/QUERYRESULTS");
+            studyQueryManager.studyArrived += onStudyQueryArrived;
+            studyQueryManager.onButtonPressed(studyQuery);
         }
 
-        public void onStudyButtonPressed(studyLevelQuery downloadInputs)
+        public void onStudyButtonPressed()
         {
-            d.onStudyButtonPressed(downloadInputs);
+            seriesQuery = new seriesLevelQuery(studyQuery);
+
+            seriesQueryManager = new queryManager(@"C:/Users/daniele/Desktop/SERIESQUERYRESULTS");
+            seriesQueryManager.seriesArrived += onSeriesQueryArrived;
+            seriesQueryManager.onStudyButtonPressed(seriesQuery);
         }
 
-        public void onCreated(studyLevelQuery queryResults)
+        public void onDownloadButtonPressed()
         {
-            RaiseEvent(queryResults);
+            d = new downloadManager();
+            //d.Event += onDownloaded;
         }
+
+
+
+        public void onStudyQueryArrived(studyLevelQuery queryResults)
+        {
+            studyQuery = queryResults;
+            raiseStudyArrived(queryResults);
+        }
+
+        public void onSeriesQueryArrived(seriesLevelQuery queryResults)
+        {
+            seriesQuery = queryResults;
+            raiseSeriesArrived((queryResults));
+        }
+
         public void onDownloaded(studyLevelQuery downloadResults)
         {
-            RaiseEvent(downloadResults);
+           // RaiseEvent(downloadResults);
         }
 
     }

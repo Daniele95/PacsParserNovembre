@@ -15,9 +15,9 @@ using System.Windows;
 namespace DataHandlerTools
 {
 
-    public class incomingFileHandler : Publisher
+    public class incomingFileHandler : SinglePublisher
     {
-        public static string databaseLocation = @"C:/Users/daniele/Desktop/QUERYRESULTS";
+        public static string databaseLocation="";
 
         public FileSystemWatcher watcher = new FileSystemWatcher();
 
@@ -26,8 +26,9 @@ namespace DataHandlerTools
         public WaitForChangedResult result;
 
 
-        public incomingFileHandler()
+        public incomingFileHandler(string dir)
         {
+            databaseLocation = dir;
             // create a listener for incoming results
             DirectoryInfo di = Directory.CreateDirectory(databaseLocation);
             watcher.Path = databaseLocation;
