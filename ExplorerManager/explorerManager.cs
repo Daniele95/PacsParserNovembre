@@ -11,12 +11,13 @@ namespace ExplorerManager
 {
     public class explorerManager : Publisher
     {
-        queryManager q;
-        downloadManager d;
+        public queryManager query;
+        public downloadManager d;
+
         public explorerManager()
         {
-            q = new queryManager();
-            q.Event += onCreated;
+            query = new queryManager();
+            query.Event += onCreated;
 
             d = new downloadManager();
             d.Event += onDownloaded;
@@ -28,7 +29,7 @@ namespace ExplorerManager
             studyLevelQuery queryInputs = new studyLevelQuery();
             queryInputs.PatientName = patientName;
             queryInputs.fill();
-            q.onButtonPressed(queryInputs);
+            query.onButtonPressed(queryInputs);
         }
 
         public void onStudyButtonPressed(studyLevelQuery downloadInputs)

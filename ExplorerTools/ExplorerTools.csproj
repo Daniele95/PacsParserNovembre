@@ -66,8 +66,8 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Compile Include="Query.xaml.cs">
-      <DependentUpon>Query.xaml</DependentUpon>
+    <Compile Include="QueryWindow.xaml.cs">
+      <DependentUpon>QueryWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="SeriesFound.xaml.cs">
       <DependentUpon>SeriesFound.xaml</DependentUpon>
@@ -84,11 +84,11 @@
       <DependentUpon>Main.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="FileExplorer.xaml">
+    <Page Include="FileBrowser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Query.xaml">
+    <Page Include="QueryWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -98,8 +98,8 @@
     </Page>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="FileExplorer.xaml.cs">
-      <DependentUpon>FileExplorer.xaml</DependentUpon>
+    <Compile Include="FileBrowser.xaml.cs">
+      <DependentUpon>FileBrowser.xaml</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs">
       <SubType>Code</SubType>

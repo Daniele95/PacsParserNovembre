@@ -21,21 +21,16 @@ namespace ExplorerTools
     /// <summary>
     /// Interaction logic for Query.xaml
     /// </summary>
-    public partial class Query : Page
+    public partial class QueryWindow : Page
     {
         public int a = 0;
         explorerManager ExplorerManager;
 
-        public Query()
+        public QueryWindow(explorerManager e)
         {
-            ExplorerManager = new explorerManager();
+            ExplorerManager = e;
             ExplorerManager.Event += onQueryArrived;
             InitializeComponent();
-            // frame.NavigationService.Navigate(new Page1());
-
-            FolderBrowserDialog f = new FolderBrowserDialog();
-            f.Show();
-
         }
 
         private void onSearchButtonClicked(object sender, RoutedEventArgs e)

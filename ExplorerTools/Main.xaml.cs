@@ -8,15 +8,35 @@ namespace ExplorerTools
 {
     public partial class Main : Window
     {
-        public int a = 0;
-        explorerManager ExplorerManager;
 
+        public explorerManager manager = new explorerManager();
+
+        FileBrowser f;
+        QueryWindow q;
+        SeriesFound s = new SeriesFound();
+         
         public Main()
         {
             InitializeComponent();
-            frame.NavigationService.Navigate(new FileExplorer());
+            q = new QueryWindow(manager);
         }
 
+        void explorerClick(object o, RoutedEventArgs e)
+        {
+            f = new FileBrowser();
+            frame.NavigationService.Navigate(f);
+
+        }
+        void queryClick(object o, RoutedEventArgs e)
+        {
+            frame.NavigationService.Navigate(q);
+
+        }
+        void downloadClick(object o, RoutedEventArgs e)
+        {
+            frame.NavigationService.Navigate(s);
+
+        }
 
     }
 }

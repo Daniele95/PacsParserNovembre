@@ -13,17 +13,23 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using FileListView.Views;
+using FileListView.ViewModels;
+using ExplorerManager;
 
 namespace ExplorerTools
 {
     /// <summary>
     /// Interaction logic for FileExplorer.xaml
     /// </summary>
-    public partial class FileExplorer : Page
+    public partial class FileBrowser : Page
     {
-        public FileExplorer()
+
+
+        public FileBrowser()
         {
             InitializeComponent();
+         
 
             var dlg = new FolderBrowser.FolderBrowserDialog();
 
@@ -32,10 +38,11 @@ namespace ExplorerTools
 
             dlg.DataContext = dlgViewModel;
 
-            bool? bResult = dlg.ShowDialog();
+           
+             bool? bResult = dlg.ShowDialog();
 
-            if (dlgViewModel.DialogCloseResult == true || bResult == true)
-                System.Windows.MessageBox.Show("OPening path:" + dlgViewModel.TreeBrowser.SelectedFolder);
+             if (dlgViewModel.DialogCloseResult == true || bResult == true)
+             System.Windows.MessageBox.Show("OPening path:" + dlgViewModel.TreeBrowser.SelectedFolder);
 
         }
     }
