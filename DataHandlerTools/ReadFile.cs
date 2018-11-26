@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Xml;
@@ -37,6 +38,7 @@ namespace DataHandlerTools
 
             return queryResults;
         }
+
         static string findTag(XmlDocument doc, string dicomTagName)
         {
 
@@ -47,6 +49,29 @@ namespace DataHandlerTools
                 result = xnList[0].InnerText;
             return result;
         }
+
+
+        /*  static void readDicomDir()
+        {
+            string dir = @"C:\Users\daniele\Desktop\dicomDatabase";
+            System.IO.StreamReader file = new System.IO.StreamReader(dir);
+            string line = "";
+            while ((line = file.ReadLine()) != null)
+            {
+                line = Regex.Replace(line, @"[^\u0020-\u007F]", " ");
+
+
+                RegexOptions options = RegexOptions.None;
+                Regex regex = new Regex("[ ]{2,}", options);
+                line = regex.Replace(line, " ");
+                line = line.Replace(" U", System.Environment.NewLine + " U");
+
+
+                Console.WriteLine(line);
+                string[] parts = line.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
+            }
+        }
+        */
 
     }
 }

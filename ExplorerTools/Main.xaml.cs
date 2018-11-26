@@ -31,6 +31,7 @@ namespace ExplorerTools
             seriesFoundPage = new SeriesFound();
             manager.studyArrived += onStudyQueryArrived;
             manager.seriesArrived += onSeriesQueryArrived;
+            manager.downloadArrivedEvent += onDownloadArrived;
         }
 
         void explorerClick(object o, RoutedEventArgs e)
@@ -88,36 +89,21 @@ namespace ExplorerTools
             Dispatcher.Invoke(() => {
                 Button result = new Button();
                 result.Content = queryResults.SeriesInstanceUID + "  "+ queryResults.SeriesDescription;
-                result.Click += ((obj, evento) => {
-                    //
-                });
+                result.Click += ((obj, evento) => { onSeriesButtonClicked(queryResults); });
                 seriesFoundPage.stackPanel.Children.Add(result);
             });
         }
 
         // ------------------------------------------------
 
-
-
-        void readDicomDir()
+        public void onSeriesButtonClicked(seriesLevelQuery queryResults)
         {
-            string dir = @"C:\Users\daniele\Desktop\dicomDatabase";
-            System.IO.StreamReader file = new System.IO.StreamReader(dir);
-            string line = "";
-            while ((line = file.ReadLine()) != null)
-            {
-                line = Regex.Replace(line, @"[^\u0020-\u007F]", " ");
+            manager.onSeriesButtonPressed(queryResults)
+;        }
 
-
-                RegexOptions options = RegexOptions.None;
-                Regex regex = new Regex("[ ]{2,}", options);
-                line = regex.Replace(line, " ");
-                line = line.Replace(" U", System.Environment.NewLine +" U");
-
-
-                Console.WriteLine(line);
-                string[] parts = line.Split(new string[] { " " }, StringSplitOptions.RemoveEmptyEntries);
-            }
+        public void onDownloadArrived(string path)
+        {
+            MessageBox.Show(path);
         }
 
     }

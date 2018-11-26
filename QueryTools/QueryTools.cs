@@ -32,19 +32,19 @@ namespace QueryTools
             foreach (FileInfo file in di.GetFiles())
                 file.Delete();
 
-            Console.WriteLine(fullQuery);
+            MessageBox.Show(fullQuery);
 
             initProcess("findscu", fullQuery);
 
         }
 
 
-        public static void downloadStudy(studyLevelQuery studyInputs)
+        public static void downloadSeries(seriesLevelQuery queryResults)
         {
             string query = "";
-            query = " -k QueryRetrieveLevel=\"STUDY\" " + query;
-            query = " -k StudyInstanceUID=\"" + studyInputs.StudyInstanceUID + "\"" + query;
-            query = " -k PatientID=\"" + studyInputs.PatientID + "\"" + query;
+            query = " -k QueryRetrieveLevel=\"SERIES\" " + query;
+            query = " -k SeriesInstanceUID=\"" + queryResults.SeriesInstanceUID + "\"" + query;
+            query = " -k StudyInstanceUID=\"" + queryResults.StudyInstanceUID + "\"" + query;
 
             string fullQuery =
                  " -aem USER  -aec MIOSERVER " + query + " localhost 11112";
@@ -52,6 +52,20 @@ namespace QueryTools
             // launch query
             initProcess("movescu-dcmtk", fullQuery);
         }
+
+        /*  public static void downloadStudy(studyLevelQuery studyInputs)
+          {
+              string query = "";
+              query = " -k QueryRetrieveLevel=\"STUDY\" " + query;
+              query = " -k StudyInstanceUID=\"" + studyInputs.StudyInstanceUID + "\"" + query;
+              query = " -k PatientID=\"" + studyInputs.PatientID + "\"" + query;
+
+              string fullQuery =
+                   " -aem USER  -aec MIOSERVER " + query + " localhost 11112";
+
+              // launch query
+              initProcess("movescu-dcmtk", fullQuery);
+          } */
 
 
         public static void initProcess(string queryType, string arguments)

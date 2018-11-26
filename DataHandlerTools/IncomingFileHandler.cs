@@ -17,7 +17,7 @@ namespace DataHandlerTools
 
     public class incomingFileHandler : SinglePublisher
     {
-        public static string databaseLocation="";
+        public  string databaseLocation="";
 
         public FileSystemWatcher watcher = new FileSystemWatcher();
 
@@ -38,22 +38,32 @@ namespace DataHandlerTools
 
         void onCreated(object a, FileSystemEventArgs s)
         {
-            XmlDocument doc = new XmlDocument();
-            // RISOLVERE PROBLEMA:
-            Thread.Sleep(2);
-
-            try
+            string[] directory = databaseLocation.Split('/');
+            // handle downloaded file
+            if (directory[directory.Length - 1].Equals("DATABASE"))
             {
-                doc.Load(s.FullPath);
-                query queryResults = ReadFile.getXml(doc);
-                RaiseEvent(queryResults); // empty message
+                raiseDownloadArrived(s.FullPath);
             }
-            catch (FileNotFoundException) { MessageBox.Show(s.FullPath + " file not found"); }
-            catch (IOException e) { MessageBox.Show(e.Message); }
+            // parse xmls containing query info 
+            else
+            { 
 
+                XmlDocument doc = new XmlDocument();
+                // RISOLVERE PROBLEMA:
+                Thread.Sleep(2);
+
+                try
+                {
+                    doc.Load(s.FullPath);
+                    query queryResults = ReadFile.getXml(doc);
+                    RaiseEvent(queryResults); // empty message
+                }
+                catch (FileNotFoundException) { MessageBox.Show(s.FullPath + " file not found"); }
+                catch (IOException e) { MessageBox.Show(e.Message); }
+            }
         }
-
-
     }
 
+
 }
+

@@ -101,8 +101,19 @@ namespace Utilities
         {
             Event(s);
         }
+
+
+        public delegate void downloadArrivedHandler(string s);
+        public event downloadArrivedHandler downloadArrivedEvent;
+
+        public void raiseDownloadArrived(string s)
+        {
+            downloadArrivedEvent(s);
+        }
+
+
     }
-   
+
 
     public abstract class Publisher
     {
@@ -121,5 +132,16 @@ namespace Utilities
         {
             seriesArrived(s);
         }
+
+
+
+        public delegate void downloadArrivedHandler(string s);
+        public event downloadArrivedHandler downloadArrivedEvent;
+
+        public void raiseDownloadArrived(string s)
+        {
+            downloadArrivedEvent(s);
+        }
+
     }
 }

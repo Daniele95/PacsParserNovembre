@@ -18,16 +18,18 @@ namespace ExplorerManager
         public queryManager seriesQueryManager;
         seriesLevelQuery seriesQuery;
 
-        public downloadManager d;
+        public queryManager downloadManager;
 
         public explorerManager()
         {
 
             studyQueryManager = new queryManager(@"C:/Users/daniele/Desktop/QUERYRESULTS");
             seriesQueryManager = new queryManager(@"C:/Users/daniele/Desktop/SERIESQUERYRESULTS");
+            downloadManager = new queryManager(@"C:/Users/daniele/Desktop/DATABASE");
 
             studyQueryManager.studyArrived += onStudyQueryArrived;
             seriesQueryManager.seriesArrived += onSeriesQueryArrived;
+            downloadManager.downloadArrivedEvent += onSeriesDownloaded;
         }
 
         // search field action
@@ -46,10 +48,9 @@ namespace ExplorerManager
             seriesQueryManager.onStudyButtonPressed(seriesQuery);
         }
 
-        public void onDownloadButtonPressed()
+        public void onSeriesButtonPressed(seriesLevelQuery queryResults)
         {
-         //   d = new downloadManager();
-            //d.Event += onDownloaded;
+            downloadManager.onSeriesButtonPressed(queryResults);
         }
 
 
@@ -66,9 +67,9 @@ namespace ExplorerManager
             raiseSeriesArrived((queryResults));
         }
 
-        public void onDownloaded(studyLevelQuery downloadResults)
+        public void onSeriesDownloaded(string fullPath)
         {
-            //RaiseEvent(downloadResults);
+             raiseDownloadArrived(fullPath);
         }
 
     }

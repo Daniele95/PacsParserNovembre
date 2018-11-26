@@ -16,12 +16,16 @@ namespace QueryManager
         List<studyLevelQuery> studyLevelQueries = new List<studyLevelQuery>();
         List<seriesLevelQuery> seriesLevelQueries = new List<seriesLevelQuery>();
 
+
         public queryManager(string dir)
         {
             this.dir = dir;
-            dataHandlerManager acceptor = new dataHandlerManager(dir);
+            dataHandlerManager  acceptor = new dataHandlerManager(dir);
             acceptor.Event += onCreated;
+            acceptor.downloadArrivedEvent += onDownloaded;
         }
+
+        // ---------QUERY AND DOWNLOAD COMMANDS-----------------------------------------
 
         public void onButtonPressed(studyLevelQuery queryInputs)
         {
@@ -34,6 +38,14 @@ namespace QueryManager
             seriesLevelQueries = new List<seriesLevelQuery>();
             queryTools.doQuery(queryInputs,dir);
         }
+
+        public void onSeriesButtonPressed(seriesLevelQuery queryResults)
+        {
+            queryTools.downloadSeries(queryResults);
+        }
+
+
+        // ---------EVENT HANDLERS-----------------------------------------
 
 
         public void onCreated(query queryResults)
@@ -52,6 +64,12 @@ namespace QueryManager
                 raiseSeriesArrived((seriesLevelQuery)queryResults);
 
             }
+
+        }
+
+        public void onDownloaded(string fullPath)
+        {
+            raiseDownloadArrived(fullPath);
         }
 
     }
