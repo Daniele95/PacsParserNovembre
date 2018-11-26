@@ -1,9 +1,7 @@
-﻿using ExplorerManager;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -14,20 +12,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using ExplorerManager;
+using FolderBrowser;
 using Utilities;
 
 namespace ExplorerTools
 {
-    public partial class ExplorerWindow : Window
+    /// <summary>
+    /// Interaction logic for Query.xaml
+    /// </summary>
+    public partial class Query : Page
     {
         public int a = 0;
         explorerManager ExplorerManager;
 
-        public ExplorerWindow()
+        public Query()
         {
             ExplorerManager = new explorerManager();
             ExplorerManager.Event += onQueryArrived;
             InitializeComponent();
+            // frame.NavigationService.Navigate(new Page1());
+
+            FolderBrowserDialog f = new FolderBrowserDialog();
+            f.Show();
+
         }
 
         private void onSearchButtonClicked(object sender, RoutedEventArgs e)
@@ -39,15 +47,20 @@ namespace ExplorerTools
         private void onQueryArrived(studyLevelQuery queryResults)
         {
             string resultText = "";
-            resultText = queryResults.PatientName+" "+ queryResults.StudyDate+"\n";
+            resultText = queryResults.PatientName + " " + queryResults.StudyDate + "\n";
 
-            this.Dispatcher.Invoke(() =>   {
-                TextBlock resultsTextBlock = new TextBlock();
-                resultsTextBlock.Text = resultText;
-                stackPanel.Children.Add(resultsTextBlock);
+            this.Dispatcher.Invoke(() => {
+                Button result = new Button();
+                result.Content = resultText;
+                result.Click += ((o, e) => {
+                    ExplorerManager.onStudyButtonPressed(queryResults);
+                });
+                stackPanel.Children.Add(result);
+
+                //Button studyDownload = 
             });
-            
+
         }
-        
+
     }
 }

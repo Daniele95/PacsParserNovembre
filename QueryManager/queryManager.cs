@@ -6,6 +6,7 @@ using Utilities;
 
 namespace QueryManager
 {
+    
     public class queryManager : Publisher
     {
         public queryManager()

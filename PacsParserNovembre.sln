@@ -17,6 +17,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ExplorerTools", "ExplorerTo
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Utilities", "Utilities\Utilities.csproj", "{A5207704-C77D-4F5E-B314-878C0A897D6F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DownloadHandlerManager", "DownloadHandlerManager\DownloadHandlerManager.csproj", "{00E35D4B-C27F-4823-9471-6918365B7AEA}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,10 @@ Global
 		{A5207704-C77D-4F5E-B314-878C0A897D6F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A5207704-C77D-4F5E-B314-878C0A897D6F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A5207704-C77D-4F5E-B314-878C0A897D6F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{00E35D4B-C27F-4823-9471-6918365B7AEA}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{00E35D4B-C27F-4823-9471-6918365B7AEA}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{00E35D4B-C27F-4823-9471-6918365B7AEA}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{00E35D4B-C27F-4823-9471-6918365B7AEA}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

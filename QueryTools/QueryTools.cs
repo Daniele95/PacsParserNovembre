@@ -36,6 +36,22 @@ namespace QueryTools
             initProcess("findscu", fullQuery);
 
         }
+
+        public static void downloadStudy(studyLevelQuery studyInputs)
+        {
+            string query = "";
+            query = " -k QueryRetrieveLevel=\"STUDY\" " + query;
+            query = " -k StudyInstanceUID=\"" + studyInputs.StudyInstanceUID + "\"" + query;
+            query = " -k PatientID=\"" + studyInputs.PatientID + "\"" + query;
+
+            string fullQuery =
+                 " -aem USER  -aec MIOSERVER " + query + " localhost 11112 -v";
+
+            // launch query
+            initProcess("movescu-dcmtk", fullQuery);
+        }
+
+
         public static void initProcess(string queryType, string arguments)
         {
             var proc = new Process

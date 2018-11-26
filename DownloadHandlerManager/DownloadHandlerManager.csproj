@@ -4,11 +4,11 @@
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{DBB57831-96CC-4A26-92C9-7FD11F7D0461}</ProjectGuid>
+    <ProjectGuid>{00E35D4B-C27F-4823-9471-6918365B7AEA}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>QueryManager</RootNamespace>
-    <AssemblyName>QueryManager</AssemblyName>
+    <RootNamespace>DownloadHandlerManager</RootNamespace>
+    <AssemblyName>DownloadHandlerManager</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
   </PropertyGroup>
@@ -40,23 +40,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="DownloadManager.cs" />
-    <Compile Include="queryManager.cs" />
+    <Compile Include="HandleDownloadedFile.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\DataHandlerManager\DataHandlerManager.csproj">
-      <Project>{cd1d41ea-3acc-4a67-8045-b2b8a874829f}</Project>
-      <Name>DataHandlerManager</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\QueryTools\QueryTools.csproj">
-      <Project>{1b8e122e-7659-4765-ac95-c1a86e759b60}</Project>
-      <Name>QueryTools</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\Utilities\Utilities.csproj">
-      <Project>{a5207704-c77d-4f5e-b314-878c0a897d6f}</Project>
-      <Name>Utilities</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
