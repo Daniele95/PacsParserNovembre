@@ -25,7 +25,7 @@ namespace ExplorerManager
 
             studyQueryManager = new queryManager(@"C:/Users/daniele/Desktop/QUERYRESULTS");
             seriesQueryManager = new queryManager(@"C:/Users/daniele/Desktop/SERIESQUERYRESULTS");
-            downloadManager = new queryManager(@"C:/Users/daniele/Desktop/DATABASE");
+            downloadManager = new queryManager(@"C:/Users/daniele/Lavoro/Dicom/Listener");
 
             studyQueryManager.studyArrived += onStudyQueryArrived;
             seriesQueryManager.seriesArrived += onSeriesQueryArrived;

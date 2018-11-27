@@ -42,6 +42,7 @@ namespace QueryManager
         public void onSeriesButtonPressed(seriesLevelQuery queryResults)
         {
             queryTools.downloadSeries(queryResults);
+            // act on the listener based on dir
         }
 
 

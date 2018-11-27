@@ -114,7 +114,6 @@ namespace Utilities
 
     }
 
-
     public abstract class Publisher
     {
         public delegate void studyArrivedHandler(studyLevelQuery s);

@@ -32,7 +32,7 @@ namespace QueryTools
             foreach (FileInfo file in di.GetFiles())
                 file.Delete();
 
-            MessageBox.Show(fullQuery);
+           // MessageBox.Show(fullQuery);
 
             initProcess("findscu", fullQuery);
 
@@ -42,9 +42,8 @@ namespace QueryTools
         public static void downloadSeries(seriesLevelQuery queryResults)
         {
             string query = "";
-            query = " -k QueryRetrieveLevel=\"SERIES\" " + query;
-            query = " -k SeriesInstanceUID=\"" + queryResults.SeriesInstanceUID + "\"" + query;
-            query = " -k StudyInstanceUID=\"" + queryResults.StudyInstanceUID + "\"" + query;
+            foreach (string dicomTag in queryResults.getKeys())
+                query = " -k " + dicomTag + "=\"" + queryResults.getValueByTag(dicomTag) + "\" " + query;
 
             string fullQuery =
                  " -aem USER  -aec MIOSERVER " + query + " localhost 11112";

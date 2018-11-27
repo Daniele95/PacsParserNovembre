@@ -17,7 +17,7 @@ namespace DataHandlerTools
             query queryResults;
 
 
-            string level = findTag(doc, "QueryRetrieveLevel");
+            string level =findTag(doc, "QueryRetrieveLevel");
 
             if (level == "STUDY")
                 queryResults = new studyLevelQuery();
@@ -25,7 +25,7 @@ namespace DataHandlerTools
                 queryResults = new seriesLevelQuery();
             else {
                 MessageBox.Show("error: could not read query from xml file");
-                queryResults = new studyLevelQuery();
+                queryResults = null;
             }
 
             List<string> queryKeys = queryResults.getKeys();

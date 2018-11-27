@@ -40,9 +40,9 @@ namespace DataHandlerTools
         {
             string[] directory = databaseLocation.Split('/');
             // handle downloaded file
-            if (directory[directory.Length - 1].Equals("DATABASE"))
+            if (directory[directory.Length - 1].Equals("Listener"))
             {
-                raiseDownloadArrived(s.FullPath);
+                raiseDownloadArrived("file downloaded in " +s.FullPath);
             }
             // parse xmls containing query info 
             else
