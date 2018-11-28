@@ -43,12 +43,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="dataHandlerManager.cs" />
+    <Compile Include="IncomingFileHandler.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ReadFile.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\DataHandlerTools\DataHandlerTools.csproj">
       <Project>{d5909cd3-c698-459b-971c-5767707add96}</Project>
       <Name>DataHandlerTools</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\QueryTools\QueryTools.csproj">
+      <Project>{1b8e122e-7659-4765-ac95-c1a86e759b60}</Project>
+      <Name>QueryTools</Name>
     </ProjectReference>
     <ProjectReference Include="..\Utilities\Utilities.csproj">
       <Project>{a5207704-c77d-4f5e-b314-878c0a897d6f}</Project>

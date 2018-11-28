@@ -22,6 +22,8 @@ namespace DataHandlerManager
             incomingFileHandler.downloadArrivedEvent += onDownloaded;
         }
 
+
+
         public void onCreated(query queryResults)
         {
             RaiseEvent(queryResults);
@@ -29,10 +31,11 @@ namespace DataHandlerManager
 
         public void onDownloaded(string fullPath)
         {
-            raiseDownloadArrived(fullPath);
+            DownloadManager downloadManager = new DownloadManager(fullPath);
+          //  downloadManager.Add(fullPath);
+
+           // raiseDownloadArrived("file downloaded in " + fullPath);
         }
-
-
-
+        
     }
 }

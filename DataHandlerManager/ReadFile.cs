@@ -7,17 +7,39 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Xml;
 using Utilities;
+using QueryTools;
 
 namespace DataHandlerTools
 {
     public static class ReadFile
     {
+
+
+        public static void dicom2xml(string path)
+        {
+            string arguments = " " + path + " " + path + ".xml";
+            // queryTools.initProcess("dcm2xml", arguments);
+        }
+
+        public static downloadedFileInfo readDownloadedXml(string path)
+        {
+
+            XmlDocument doc = new XmlDocument();
+            doc.Load(path);
+            downloadedFileInfo downloadedFile = new downloadedFileInfo();
+            downloadedFile.PatientName = findTag(doc, "PatientName");
+            downloadedFile.StudyDescription = findTag(doc, "StudyDescription");
+            downloadedFile.SeriesDescription = findTag(doc, "SeriesDescription");
+            return downloadedFile;
+
+        }
+
+
         public static query getXml(XmlDocument doc)
         {
             query queryResults;
 
-
-            string level =findTag(doc, "QueryRetrieveLevel");
+            string level = findTag(doc, "QueryRetrieveLevel");
 
             if (level == "STUDY")
                 queryResults = new studyLevelQuery();

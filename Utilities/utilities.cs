@@ -1,5 +1,7 @@
 ﻿using System;
+
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using System.Reflection;
 using System.Text;
@@ -8,6 +10,34 @@ using System.Windows;
 
 namespace Utilities
 {
+
+
+
+    public abstract class fileCreatorAndListener : SinglePublisher
+    {
+
+
+        public string databaseLocation = "";
+        public FileSystemWatcher watcher = new FileSystemWatcher();
+
+        public fileCreatorAndListener(string dir)
+        {
+            listen(dir);
+        }
+
+        public void listen (string path)
+        {
+            databaseLocation = path;
+            // create a listener for incoming results
+            System.IO.DirectoryInfo di = Directory.CreateDirectory(path);
+            watcher.Path = path;
+            watcher.Created += new FileSystemEventHandler(onCreated);
+            watcher.EnableRaisingEvents = true;
+        }
+
+        public abstract void onCreated(object o, FileSystemEventArgs e);
+    }
+
     public class studyLevelQuery: query
     {
         public string QueryRetrieveLevel { get; set; } = "STUDY";
@@ -20,6 +50,7 @@ namespace Utilities
         public string AccessionNumber { get; set; } = "";
         public string StudyDescription { get; set; } = "";
     }
+
 
     public class seriesLevelQuery : query
     {
@@ -37,7 +68,6 @@ namespace Utilities
         {
             setValueOfTag("StudyInstanceUID",studyQuery.getValueByTag("StudyInstanceUID"));
             setValueOfTag("PatientID", studyQuery.getValueByTag("PatientID"));
-
         }
 
     }

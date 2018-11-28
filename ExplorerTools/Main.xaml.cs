@@ -8,6 +8,7 @@ using System.IO;
 using System.Text.RegularExpressions;
 using Utilities;
 using System.Windows.Controls;
+using DataHandlerTools;
 
 namespace ExplorerTools
 {
@@ -27,11 +28,14 @@ namespace ExplorerTools
         public Main()
         {
             InitializeComponent();
+            string dir = @"C:\Users\daniele\Lavoro\Dicom\Listener";
+            DownloadManager d = new DownloadManager(dir);
+       /*     
             queryWindow = new QueryWindow(this);
             seriesFoundPage = new SeriesFound();
             manager.studyArrived += onStudyQueryArrived;
             manager.seriesArrived += onSeriesQueryArrived;
-            manager.downloadArrivedEvent += onDownloadArrived;
+            manager.downloadArrivedEvent += onDownloadArrived;*/
         }
 
         void explorerClick(object o, RoutedEventArgs e)

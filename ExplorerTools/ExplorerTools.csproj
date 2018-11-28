@@ -127,6 +127,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\DataHandlerTools\DataHandlerTools.csproj">
+      <Project>{d5909cd3-c698-459b-971c-5767707add96}</Project>
+      <Name>DataHandlerTools</Name>
+    </ProjectReference>
     <ProjectReference Include="..\ExplorerManager\ExplorerManager.csproj">
       <Project>{d472e881-dcfd-4e79-9b41-cd7fee73ee27}</Project>
       <Name>ExplorerManager</Name>

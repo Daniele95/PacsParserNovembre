@@ -15,34 +15,24 @@ using System.Windows;
 namespace DataHandlerTools
 {
 
-    public class incomingFileHandler : SinglePublisher
+    public class incomingFileHandler : fileCreatorAndListener
     {
-        public  string databaseLocation="";
-
-        public FileSystemWatcher watcher = new FileSystemWatcher();
-
         public string dati = "";
 
         public WaitForChangedResult result;
 
-
-        public incomingFileHandler(string dir)
+        public incomingFileHandler(string path) : base(path)
         {
-            databaseLocation = dir;
-            // create a listener for incoming results
-            DirectoryInfo di = Directory.CreateDirectory(databaseLocation);
-            watcher.Path = databaseLocation;
-            watcher.Created += new FileSystemEventHandler(onCreated);
-            watcher.EnableRaisingEvents = true;
         }
 
-        void onCreated(object a, FileSystemEventArgs s)
+        public override void onCreated(object a, FileSystemEventArgs s)
         {
             string[] directory = databaseLocation.Split('/');
-            // handle downloaded file
             if (directory[directory.Length - 1].Equals("Listener"))
             {
-                raiseDownloadArrived("file downloaded in " +s.FullPath);
+                // handle downloaded file
+                string fullPath = s.FullPath.Substring(0, s.FullPath.Length - 5);
+                raiseDownloadArrived(fullPath);
             }
             // parse xmls containing query info 
             else
@@ -51,7 +41,6 @@ namespace DataHandlerTools
                 XmlDocument doc = new XmlDocument();
                 // RISOLVERE PROBLEMA:
                 Thread.Sleep(2);
-
                 try
                 {
                     doc.Load(s.FullPath);

@@ -16,6 +16,7 @@ namespace QueryManager
         List<studyLevelQuery> studyLevelQueries = new List<studyLevelQuery>();
         List<seriesLevelQuery> seriesLevelQueries = new List<seriesLevelQuery>();
 
+        seriesLevelQuery downloadedFileInfo;
 
         public queryManager(string dir)
         {
@@ -41,6 +42,7 @@ namespace QueryManager
 
         public void onSeriesButtonPressed(seriesLevelQuery queryResults)
         {
+          //  downloadedFileInfo = queryResults;
             queryTools.downloadSeries(queryResults);
             // act on the listener based on dir
         }

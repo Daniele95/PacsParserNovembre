@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<file-format>
+<meta-header xfer="1.2.840.10008.1.2.1" name="Little Endian Explicit">
+<element tag="0002,0000" vr="UL" vm="1" len="4" name="FileMetaInformationGroupLength">198</element>
+<element tag="0002,0001" vr="OB" vm="1" len="2" name="FileMetaInformationVersion" binary="hidden"></element>
+<element tag="0002,0002" vr="UI" vm="1" len="28" name="MediaStorageSOPClassUID">1.2.840.10008.5.1.4.1.1.12.2</element>
+<element tag="0002,0003" vr="UI" vm="1" len="48" name="MediaStorageSOPInstanceUID">1.3.6.1.4.1.5962.1.1.0.0.0.1168612284.20369.0.3</element>
+<element tag="0002,0010" vr="UI" vm="1" len="20" name="TransferSyntaxUID">1.2.840.10008.1.2.1</element>
+<element tag="0002,0012" vr="UI" vm="1" len="16" name="ImplementationClassUID">1.2.40.0.13.1.3</element>
+<element tag="0002,0013" vr="SH" vm="1" len="14" name="ImplementationVersionName">dcm4che-5.14.1</element>
+<element tag="0002,0016" vr="AE" vm="1" len="10" name="SourceApplicationEntityTitle">MIOSERVER</element>
+</meta-header>
+<data-set xfer="1.2.840.10008.1.2.1" name="Little Endian Explicit">
+<element tag="0008,0005" vr="CS" vm="1" len="10" name="SpecificCharacterSet">ISO_IR 100</element>
+<element tag="0008,0008" vr="CS" vm="3" len="30" name="ImageType">ORIGINAL\PRIMARY\SINGLE PLANE</element>
+<element tag="0008,0012" vr="DA" vm="1" len="8" name="InstanceCreationDate">20070112</element>
+<element tag="0008,0013" vr="TM" vm="1" len="6" name="InstanceCreationTime">093126</element>
+<element tag="0008,0014" vr="UI" vm="1" len="18" name="InstanceCreatorUID">1.3.6.1.4.1.5962.3</element>
+<element tag="0008,0016" vr="UI" vm="1" len="28" name="SOPClassUID">1.2.840.10008.5.1.4.1.1.12.2</element>
+<element tag="0008,0018" vr="UI" vm="1" len="48" name="SOPInstanceUID">1.3.6.1.4.1.5962.1.1.0.0.0.1168612284.20369.0.3</element>
+<element tag="0008,0020" vr="DA" vm="1" len="8" name="StudyDate">20061207</element>
+<element tag="0008,0021" vr="DA" vm="1" len="8" name="SeriesDate">20061207</element>
+<element tag="0008,0022" vr="DA" vm="1" len="8" name="AcquisitionDate">20061207</element>
+<element tag="0008,0023" vr="DA" vm="1" len="8" name="ContentDate">20061207</element>
+<element tag="0008,0030" vr="TM" vm="1" len="6" name="StudyTime">091414</element>
+<element tag="0008,0031" vr="TM" vm="1" len="12" name="SeriesTime">091414.0157</element>
+<element tag="0008,0032" vr="TM" vm="1" len="12" name="AcquisitionTime">091414.0157</element>
+<element tag="0008,0033" vr="TM" vm="1" len="12" name="ContentTime">091414.0157</element>
+<element tag="0008,0050" vr="SH" vm="1" len="2" name="AccessionNumber">2</element>
+<element tag="0008,0060" vr="CS" vm="1" len="2" name="Modality">RF</element>
+<element tag="0008,0070" vr="LO" vm="1" len="8" name="Manufacturer">SIEMENS</element>
+<element tag="0008,0090" vr="PN" vm="0" len="0" name="ReferringPhysicianName"></element>
+<element tag="0008,0201" vr="SH" vm="1" len="6" name="TimezoneOffsetFromUTC">-0500</element>
+<element tag="0008,1030" vr="LO" vm="1" len="26" name="StudyDescription">UPPER GI SERIES (STOMACH)</element>
+<sequence tag="0008,1032" vr="SQ" card="1" name="ProcedureCodeSequence">
+<item card="3">
+<element tag="0008,0100" vr="SH" vm="1" len="6" name="CodeValue">RADUGI</element>
+<element tag="0008,0102" vr="SH" vm="1" len="6" name="CodingSchemeDesignator">BROKER</element>
+<element tag="0008,0104" vr="LO" vm="1" len="26" name="CodeMeaning">UPPER GI SERIES (STOMACH)</element>
+</item>
+</sequence>
+<element tag="0008,103e" vr="LO" vm="1" len="18" name="SeriesDescription">Barium        3F/s</element>
+<element tag="0008,1080" vr="LO" vm="0" len="0" name="AdmittingDiagnosesDescription"></element>
+<element tag="0008,1090" vr="LO" vm="1" len="18" name="ManufacturerModelName">FLUOROSPOT_COMPACT</element>
+<element tag="0010,0010" vr="PN" vm="1" len="28" name="PatientName">Test^FluroWithDisplayShutter</element>
+<element tag="0010,0020" vr="LO" vm="1" len="12" name="PatientID">TEST2351267</element>
+<element tag="0010,0030" vr="DA" vm="0" len="0" name="PatientBirthDate"></element>
+<element tag="0010,0040" vr="CS" vm="0" len="0" name="PatientSex"></element>
+<element tag="0012,0062" vr="CS" vm="1" len="4" name="PatientIdentityRemoved">YES</element>
+<element tag="0012,0063" vr="LO" vm="9" len="120" name="DeidentificationMethod">dcanon\no identifiers\keep descriptions\keep manufacturer\keep retired\no private\no uids\no pet demographics\keep dates</element>
+<element tag="0018,0010" vr="LO" vm="0" len="0" name="ContrastBolusAgent"></element>
+<element tag="0018,0060" vr="DS" vm="1" len="2" name="KVP">93</element>
+<element tag="0018,1020" vr="LO" vm="1" len="6" name="SoftwareVersions">VE20F</element>
+<element tag="0018,1110" vr="DS" vm="1" len="4" name="DistanceSourceToDetector">1150</element>
+<element tag="0018,1111" vr="DS" vm="1" len="4" name="DistanceSourceToPatient">972</element>
+<element tag="0018,1114" vr="DS" vm="1" len="6" name="EstimatedRadiographicMagnificationFactor">1.1831</element>
+<element tag="0018,1134" vr="CS" vm="1" len="6" name="TableMotion">STATIC</element>
+<element tag="0018,1138" vr="DS" vm="1" len="2" name="TableAngle">89</element>
+<element tag="0018,1147" vr="CS" vm="1" len="6" name="FieldOfViewShape">ROUND</element>
+<element tag="0018,1149" vr="IS" vm="1" len="4" name="FieldOfViewDimensions">300</element>
+<element tag="0018,1150" vr="IS" vm="1" len="2" name="ExposureTime">4</element>
+<element tag="0018,1151" vr="IS" vm="1" len="4" name="XRayTubeCurrent">325</element>
+<element tag="0018,1154" vr="DS" vm="1" len="2" name="AveragePulseWidth">4</element>
+<element tag="0018,1155" vr="CS" vm="1" len="2" name="RadiationSetting">GR</element>
+<element tag="0018,115a" vr="CS" vm="1" len="6" name="RadiationMode">PULSED</element>
+<element tag="0018,115e" vr="DS" vm="1" len="4" name="ImageAndFluoroscopyAreaDoseProduct">0.3</element>
+<element tag="0018,1160" vr="SH" vm="1" len="10" name="FilterType">CU_0.0_MM</element>
+<element tag="0018,1162" vr="DS" vm="1" len="4" name="IntensifierSize">367</element>
+<element tag="0018,1164" vr="DS" vm="2" len="12" name="ImagerPixelSpacing">0.293\0.293</element>
+<element tag="0018,1450" vr="DS" vm="1" len="2" name="ColumnAngulation">0</element>
+<element tag="0018,1600" vr="CS" vm="2" len="20" name="ShutterShape">RECTANGULAR\CIRCULAR</element>
+<element tag="0018,1602" vr="IS" vm="1" len="4" name="ShutterLeftVerticalEdge">233</element>
+<element tag="0018,1604" vr="IS" vm="1" len="4" name="ShutterRightVerticalEdge">789</element>
+<element tag="0018,1606" vr="IS" vm="1" len="2" name="ShutterUpperHorizontalEdge">5</element>
+<element tag="0018,1608" vr="IS" vm="1" len="4" name="ShutterLowerHorizontalEdge">1018</element>
+<element tag="0018,1610" vr="IS" vm="2" len="8" name="CenterOfCircularShutter">512\512</element>
+<element tag="0018,1612" vr="IS" vm="1" len="4" name="RadiusOfCircularShutter">517</element>
+<element tag="0020,000d" vr="UI" vm="1" len="48" name="StudyInstanceUID">1.3.6.1.4.1.5962.1.1.0.0.0.1168612284.20369.0.1</element>
+<element tag="0020,000e" vr="UI" vm="1" len="48" name="SeriesInstanceUID">1.3.6.1.4.1.5962.1.1.0.0.0.1168612284.20369.0.2</element>
+<element tag="0020,0010" vr="SH" vm="1" len="2" name="StudyID">2</element>
+<element tag="0020,0011" vr="IS" vm="1" len="2" name="SeriesNumber">1</element>
+<element tag="0020,0012" vr="IS" vm="1" len="2" name="AcquisitionNumber">1</element>
+<element tag="0020,0013" vr="IS" vm="1" len="2" name="InstanceNumber">1</element>
+<element tag="0020,0020" vr="CS" vm="0" len="0" name="PatientOrientation"></element>
+<element tag="0020,0060" vr="CS" vm="0" len="0" name="Laterality"></element>
+<element tag="0028,0002" vr="US" vm="1" len="2" name="SamplesPerPixel">1</element>
+<element tag="0028,0004" vr="CS" vm="1" len="12" name="PhotometricInterpretation">MONOCHROME2</element>
+<element tag="0028,0010" vr="US" vm="1" len="2" name="Rows">1024</element>
+<element tag="0028,0011" vr="US" vm="1" len="2" name="Columns">1024</element>
+<element tag="0028,0030" vr="DS" vm="2" len="12" name="PixelSpacing">0.293\0.293</element>
+<element tag="0028,0100" vr="US" vm="1" len="2" name="BitsAllocated">16</element>
+<element tag="0028,0101" vr="US" vm="1" len="2" name="BitsStored">10</element>
+<element tag="0028,0102" vr="US" vm="1" len="2" name="HighBit">9</element>
+<element tag="0028,0103" vr="US" vm="1" len="2" name="PixelRepresentation">0</element>
+<element tag="0028,1040" vr="CS" vm="1" len="4" name="PixelIntensityRelationship">LIN</element>
+<element tag="0028,1050" vr="DS" vm="1" len="4" name="WindowCenter">640</element>
+<element tag="0028,1051" vr="DS" vm="1" len="4" name="WindowWidth">588</element>
+<element tag="0032,1032" vr="PN" vm="0" len="0" name="RequestingPhysician"></element>
+<element tag="0038,0300" vr="LO" vm="1" len="4" name="CurrentPatientLocation">RAD</element>
+<element tag="0040,0254" vr="LO" vm="1" len="26" name="PerformedProcedureStepDescription">UPPER GI SERIES (STOMACH)</element>
+<element tag="7fe0,0010" vr="OW" vm="1" len="2097152" name="PixelData" loaded="no" binary="hidden"></element>
+</data-set>
+</file-format>

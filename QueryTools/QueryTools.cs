@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using Utilities;
@@ -12,6 +13,39 @@ namespace QueryTools
 {
     public static class queryTools
     {
+        // https://stackoverflow.com/questions/21739242/filestream-and-a-filesystemwatcher-in-c-weird-issue-process-cannot-access-the
+        public static bool IsFileClosed(string filepath, bool wait)
+        {
+            bool fileClosed = false;
+            int retries = 20;
+            const int delay = 500; // Max time spent here = retries*delay milliseconds
+
+            if (!File.Exists(filepath))
+                return false;
+
+            do
+            {
+                try
+                {
+                    // Attempts to open then close the file in RW mode, denying other users to place any locks.
+                    FileStream fs = File.Open(filepath, FileMode.Open, FileAccess.ReadWrite, FileShare.None);
+                    fs.Close();
+                    fileClosed = true; // success
+                }
+                catch (IOException) { }
+
+                if (!wait) break;
+
+                retries--;
+
+                if (!fileClosed)
+                    Thread.Sleep(delay);
+            }
+            while (!fileClosed && retries > 0);
+
+            return fileClosed;
+        }
+
         public static string servicesLocation = @"C:/Users/daniele/Documents/Visual Studio 2017/Projects/PacsParserNovembre/Services/";
 
         public static bool verbose = true;
