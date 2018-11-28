@@ -72,6 +72,7 @@ namespace QueryManager
 
         public void onDownloaded(string fullPath)
         {
+            string dir = @"C:\Users\daniele\Lavoro\Dicom\Listener";
             raiseDownloadArrived(fullPath);
         }
 

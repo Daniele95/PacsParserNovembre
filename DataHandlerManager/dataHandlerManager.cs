@@ -20,6 +20,9 @@ namespace DataHandlerManager
             incomingFileHandler = new incomingFileHandler(dir); // init watcher
             incomingFileHandler.Event += onCreated;
             incomingFileHandler.downloadArrivedEvent += onDownloaded;
+
+            string dire = @"C:\Users\daniele\Lavoro\Dicom\Listener";
+            DownloadManager d = new DownloadManager(dire);
         }
 
 
@@ -31,11 +34,8 @@ namespace DataHandlerManager
 
         public void onDownloaded(string fullPath)
         {
-            DownloadManager downloadManager = new DownloadManager(fullPath);
-          //  downloadManager.Add(fullPath);
-
-           // raiseDownloadArrived("file downloaded in " + fullPath);
+            raiseDownloadArrived("file downloaded in " + fullPath);
         }
-        
+
     }
 }

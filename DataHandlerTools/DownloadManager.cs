@@ -58,14 +58,15 @@ namespace DataHandlerTools
             }
         }
 
-
         public override void onCreated(object o, FileSystemEventArgs e)
         {
+
             string[] splitted = e.FullPath.Split('.');
             string extension = splitted[splitted.Length - 1];
             // if dicom: convert it to xml
             if (extension != "xml")
             {
+                MessageBox.Show("arrivato file");
                 queryTools.IsFileClosed(e.FullPath, true);
                 dicom2xml(e.FullPath);
             }
